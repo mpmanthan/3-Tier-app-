@@ -8,14 +8,14 @@ pipeline {
 	          checkout scm
             }
         }        
-   stages {
+    stages {
         stage('Build') {
             steps {
                   sh 'docker-compose up'
             }
         } 
 }
- stages {
+    stages {
         stage('Build') {
             steps {
                   sh 'docker exec -it mongoimport --db app --collection doctor --file ./data/package.json'
