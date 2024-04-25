@@ -15,7 +15,7 @@ pipeline {
             }
         } 
 
-        stage('Build') {
+        stage('Data import') {
             steps {
                   sh 'docker exec -it mongo mongoimport --db app --collection doctor --file ./data/package.json'
                   sh 'docker exec -it mongo mongoimport --db app --collection doctor --file ./data/package-lock.json'
