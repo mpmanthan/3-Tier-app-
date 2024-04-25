@@ -15,4 +15,14 @@ pipeline {
             }
         } 
 }
+ stages {
+        stage('Build') {
+            steps {
+                  sh 'docker exec -it mongoimport --db app --collection doctor --file ./data/package.json'
+                  sh 'docker exec -it mongoimport --db app --collection doctor --file ./data/package-lock.json'
+          }
+        }
+}
+
+}
 }
