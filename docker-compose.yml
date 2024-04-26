@@ -3,6 +3,8 @@ services:
   mongodb:
     container_name: mongo
     image: mongo:latest
+    networks:
+      - jet
     volumes:
       - ./backend/send:/data
     ports:
@@ -11,6 +13,9 @@ services:
   backend:
     container_name: backend
     build: ./backend
+    networks:
+      - jet
+
     env_file:
       - ./backend/.env.sample
     ports:
@@ -21,6 +26,8 @@ services:
   frontend:
     container_name: frontend
     build: ./client
+    networks:
+      - jet
     env_file:
       - ./client/.env.sample
     ports:
@@ -28,4 +35,6 @@ services:
 
 volumes:
   send:
-
+    
+networks:
+  jet:
