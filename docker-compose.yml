@@ -6,7 +6,7 @@ services:
     networks:
       - jet
     volumes:
-      - ./backend/send:/data
+      - send/:/data/db
     ports:
       - "27017:27017"
 
@@ -32,6 +32,8 @@ services:
       - ./client/.env.sample
     ports:
       - "3000:3000"
+    depends_on:
+      - backend
 
 volumes:
   send:
